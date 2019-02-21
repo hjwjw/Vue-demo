@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vue 测试</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1 v-show="true">Hello!</h1>
+    <p v-html="foo"></p>
+    <!-- 这里的 `foo` 不会更新！ -->
+    <button v-on:click="foo = 'baz'">Change it</button>
+    <br>
+    <a v-bind:href="foo" >....</a>
+</div>
+<script type="text/javascript">
+
+    var obj = {
+        foo: '<h2>bar</h2>'
+    }
+
+    // Object.freeze(obj)
+
+    new Vue({
+        el: '#app',
+        data: obj
+    })
+</script>
+</body>
+</html>

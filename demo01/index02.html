@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <title>按键修饰符</title>
+</head>
+<body>
+<!-- 只有在 `key` 是 `Enter` 时调用 `vm.submit()` -->
+<div id="example">
+    <input v-on:keyup.enter="submit">
+</div>
+
+<script>
+    new Vue({
+        el: '#example',
+        methods: {
+            submit: function (e) {
+                console.log(e)
+                alert(e)
+            }
+        }
+    })
+</script>
+</body>
+</html>

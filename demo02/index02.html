@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id='demo'>
+    <span v-html="msg"></span>  {{msg}}
+</div>
+
+<script>
+
+    window.onload=function(){
+        //在这里面写Vue.js代码
+        var data={msg:'<p>Hello Vue.js!</p>'};
+        new Vue({
+            el: '#demo',
+            data: data
+        })
+        //----------------
+    }
+</script>
+</body>
+</html>

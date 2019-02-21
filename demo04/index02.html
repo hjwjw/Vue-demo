@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用事件抛出一个值</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="blog-post">
+    <div :style="{fontSize: fontSize+'em'}">
+        <blog-post v-for="post in posts"
+                   v-bind:key="post.id"
+                   v-bind:post="post"
+                   v-on:enlarge-text="fontSize += $event"
+        ></blog-post>
+    </div>
+</div>
+
+
+<script>
+    Vue.component('blog-post',{
+        props:['post'],
+        template:`
+            <div class="blog-post">
+                <h3>{{post.title}}</h3>
+                <button v-on:click="$emit('enlarge-text',1)">enlarge text </button>
+                <div v-html="post.content"></div>
+            </div>
+            `
+    })
+
+
+    new Vue({
+        el: "#blog-post",
+        data:{
+            fontSize: 1,
+            posts:[
+                {
+                    id:'1',
+                    title: '1this',
+                    content:'this'
+                },
+                {
+                    id:'2',
+                    title: 'that',
+                    content:'that is my'
+                }
+            ]
+        }
+    })
+</script>
+</body>
+</html>

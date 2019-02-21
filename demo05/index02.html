@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>动态组件</title>
+    <script src="../build/vue2.js"></script>
+</head>
+<body>
+<div id="example">
+<button v-for="tab in tabs" v-bind:key="tab" v-on:Click="current = tab">{{tab}}</button>
+    <component v-bind:is="currentTabComponent"></component>
+</div>
+
+<script>
+    Vue.component('tab-home',{
+        template: '<div>Home component</div>'
+    })
+    Vue.component('tab-posts',{
+        template: '<div>Posts component</div>'
+    })
+    Vue.component('tab-archive',{
+        template: '<div>Archive component</div>'
+    })
+
+    new Vue({
+        el:'#example',
+        data:{
+            current:'Home',
+            tabs: ['Home','Posts','Archive']
+        },
+        computed:{
+            currentTabComponent: function () {
+                return 'tab-'+this.current.toLowerCase()
+            }
+        }
+    })
+</script>
+</body>
+</html>
